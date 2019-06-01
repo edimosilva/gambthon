@@ -1,3 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'myseed', to: 'courses#myseed'
+  get 'delete_all', to: 'courses#deleteall'
+  get 'courses', to: 'courses#list'
+  get 'courses_by_ies', to: 'courses#courses_by_ies'
+  get 'get_all_ies', to: 'courses#get_all_ies'
 end
