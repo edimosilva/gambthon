@@ -83,7 +83,11 @@ class Course < ApplicationRecord
         min_salary = salary if salary < min_salary && salary > 0
         max_salary = salary if salary > max_salary
       end
-      value = "R$ #{min_salary} - R$ #{max_salary}"
+      f_min_salary = min_salary.to_s
+      f_max_salary = max_salary.to_s
+      f_min_salary = min_salary.to_s.insert(1, ",") if min_salary > 1000
+      f_max_salary = max_salary.to_s.insert(1, ",") if max_salary > 1000
+      value = "R$ #{f_min_salary} - R$ #{f_max_salary}"
       value
     rescue Exception => e # Never do this!
       print e
@@ -128,7 +132,8 @@ class Course < ApplicationRecord
       response = http.request(request)
       response.inspect
       json_body = JSON.parse(response.body)
-      json_body['rows'][0]['elements'][0]['distance']['value'].to_f / 1000
+      result = json_body['rows'][0]['elements'][0]['distance']['value'].to_f / 1000
+      "#{'%.2f' % result}"
     rescue Exception => e # Never do this!
       print e
     end

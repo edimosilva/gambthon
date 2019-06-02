@@ -59,6 +59,8 @@ class CourseSerializer < ActiveModel::Serializer
 
   def distance_to_center
     d = object.distance_to_center
+    d = d.to_s.gsub('.', ',')
+
     "#{d} KM" if d
   end
 
