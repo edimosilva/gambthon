@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get 'myseed', to: 'courses#myseed'
+  get 'delete_all', to: 'courses#deleteall'
   get 'courses', to: 'courses#list'
   get 'courses_by_ies', to: 'courses#courses_by_ies'
   get 'get_all_ies', to: 'courses#get_all_ies'
@@ -9,4 +10,6 @@ Rails.application.routes.draw do
   get 'get_all_ies_by_city', to: 'courses#get_all_ies_by_city'
   get 'set_lat_andlng', to: 'courses#set_lat_andlng'
   get 'distance_to_ies', to: 'courses#distance_to_ies'
+  get 'courses_by_city', to: 'courses#courses_by_city'
+  get 'get_all_ies_by_course_and_city', to: 'courses#get_all_ies_by_course_and_city'
 end
