@@ -43,8 +43,8 @@ class CoursesController < ApplicationController
   def get_all_ies_by_course_and_city
     course_name = params['name'];
     city = params['city'];
-    course = Course.where(name: course_name, city: city);
-    render json: course, each_serializer: CourseSerializer
+    course = Course.where(name: course_name, city: city).pluck(:ies).uniq;
+    render json: course
   end
 
 
@@ -61,6 +61,14 @@ class CoursesController < ApplicationController
     render json: course, serializer: CourseSerializer
   end
 
+  def get_course_by_name_and_ies_and_city
+    course_name = params['name'];
+    ies = params['ies'];
+    city = params['city'];
+
+    course = Course.find_by(name: course_name, ies: ies, city: city);
+    render json: course, serializer: CourseSerializer
+  end
   def deleteall
     Course.destroy_all
     render json: { data: Course.all }

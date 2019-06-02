@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'distance_to_ies', to: 'courses#distance_to_ies'
   get 'courses_by_city', to: 'courses#courses_by_city'
   get 'get_all_ies_by_course_and_city', to: 'courses#get_all_ies_by_course_and_city'
+  get 'get_course_by_name_and_ies_and_city', to: 'courses#get_course_by_name_and_ies_and_city'
 end
