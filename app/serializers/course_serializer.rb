@@ -38,7 +38,16 @@ class CourseSerializer < ActiveModel::Serializer
   end
 
   def area
-    object.area
+    a = object.area
+    if a == 'CE'
+      return 'Ciências Exatas'
+    elsif a == 'CB'
+      return 'Ciências Biológicas'
+    elsif a == 'CH'
+      return 'Ciências Humanas'
+    end
+
+    a
   end
 
   def state
