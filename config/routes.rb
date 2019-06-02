@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get 'get_all_ies', to: 'courses#get_all_ies'
   get 'get_course_by_name_and_ies', to: 'courses#get_course_by_name_and_ies'
   get 'catcho', to: 'courses#catcho'
+  get 'get_all_cities', to: 'courses#get_all_cities'
+  get 'get_all_ies_by_city', to: 'courses#get_all_ies_by_city'
 end

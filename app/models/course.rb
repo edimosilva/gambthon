@@ -4,8 +4,9 @@ class Course < ApplicationRecord
   end
 
   def estagio_average_salarie
-    search_term = "estagio-em-#{name}"
-    average_salarie_from_catho(search_term)
+    estagio_slug = estagio.gsub!(' ', '-')
+    # search_term = "estagio-em-#{name}"
+    average_salarie_from_catho(estagio_slug)
   end
 
   def average_salarie_from_catho(search_term)
@@ -38,7 +39,9 @@ class Course < ApplicationRecord
   end
 
   def valor_do_desconto
-    "R$ #{field3.to_f - field4.to_f}"
+    result = field3.to_f - field4.to_f
+    result = "#{'%.2f' % result}"
+    "R$ #{result}"
   end
 
   def duracao_curso

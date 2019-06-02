@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_191611) do
+ActiveRecord::Schema.define(version: 2019_06_02_020120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,25 @@ ActiveRecord::Schema.define(version: 2019_06_01_191611) do
     t.string "field10"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "field11"
+    t.string "field12"
+    t.string "field13"
+    t.string "field14"
+    t.string "field15"
+    t.string "field16"
+    t.string "field17"
+    t.string "field18"
+    t.string "field19"
+    t.string "field20"
+    t.string "ies_full"
+    t.string "estagio"
+    t.string "about"
+    t.string "relatede_course"
+    t.string "mec_score"
+    t.string "course_grade"
+    t.string "cep"
+    t.string "lat"
+    t.string "lng"
   end
 
 end

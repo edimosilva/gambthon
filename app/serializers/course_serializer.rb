@@ -1,5 +1,5 @@
 class CourseSerializer < ActiveModel::Serializer
-  attributes :name, :full_name, :ies_name, :ies_logo, :city, :average_salarie, :estagio_average_salarie, :valor_completo, :valor_com_desconto, :valor_do_desconto, :duracao_curso, :link_bolsa, :area, :state, :empregabilidade, :intercambio
+  attributes :name, :full_name, :ies_name, :ies_logo, :city, :average_salarie, :estagio_average_salarie, :valor_completo, :valor_com_desconto, :valor_do_desconto, :duracao_curso, :link_bolsa, :area, :state, :empregabilidade, :intercambio,:ies_full, :estagio, :about, :relatede_course, :mec_score, :course_grade, :cep, :lat, :lng
 
   def full_name
     "#{object.name} - #{object.ies} - #{object.city}"
