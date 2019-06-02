@@ -41,6 +41,8 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'active_model_serializers'
   gem 'pry'
+  gem 'rack-cors'
+
 end
 
 

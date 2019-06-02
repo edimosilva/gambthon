@@ -1,6 +1,12 @@
+require 'net/http'
+
 class CoursesController < ApplicationController
+  def catcho
+    render json: { data: Course.first.average_salarie };
+  end
+
   def myseed
-    Course.create(name: 'Ciencias da Computação', ies: 'rep', city: 'São José', field1: 'nota 9');
+    Course.create(name: 'Enfermagem', ies: 'rep', city: 'São José', field1: 'enfermeiro');
     Course.create(name: 'Marketing', ies: 'rep', city: 'São José', field1: 'nota 7');
     Course.create(name: 'Ciencias da Computação', ies: 'UNI', city: 'São José', field1: 'nota 9');
     Course.create(name: 'Sistemas de Informação', ies: 'FAC10', city: 'São José', field1: 'nota 8');
@@ -16,6 +22,13 @@ class CoursesController < ApplicationController
 
   def get_all_ies
     render json: Course.all.pluck(:ies).uniq, each_serializer: IesSerializer
+  end
+
+  def get_course_by_name_and_ies
+    course_name = params['name'];
+    ies = params['ies'];
+    course = Course.find_by(name: course_name, ies: ies);
+    render json: course, each_serializer: CourseSerializer
   end
 
   def courses_by_ies
