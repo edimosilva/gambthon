@@ -6,7 +6,8 @@ class CoursesController < ApplicationController
   end
 
   def myseed
-    Course.create(name: 'Enfermagem', ies: 'rep', city: 'São José', field1: 'enfermeiro', field2:'https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_Unichristus.png', field3:'1000.00', field4: '800.00');
+    Course.create(name: 'Enfermagem', ies: 'UNICHRISTUS', city: 'Fortaleza', field1: 'enfermeiro', field2:'https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_Unichristus.png', field3:'1339.60', field4: '669.80', field5:'4', field6:'https://querobolsa.com.br/unichristus-centro-universitario-christus/cursos/enfermagem', field7: 'CB', field8: 'CE', field9: '83%', field10: '-');
+
     Course.create(name: 'Marketing', ies: 'rep', city: 'São José', field1: 'nota 7');
     Course.create(name: 'Ciencias da Computação', ies: 'UNI', city: 'São José', field1: 'nota 9');
     Course.create(name: 'Sistemas de Informação', ies: 'FAC10', city: 'São José', field1: 'nota 8');

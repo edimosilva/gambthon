@@ -41,6 +41,29 @@ class Course < ApplicationRecord
     "R$ #{field3.to_f - field4.to_f}"
   end
 
+  def duracao_curso
+    field5
+  end
+
+  def link_bolsa
+    field6
+  end
+
+  def area
+    field7
+  end
+
+  def state
+    field8
+  end
+
+  def empregabilidade
+    field9
+  end
+
+  def intercambio
+    field10
+  end
 
   def salaries_average(json)
     jobs = json['cargos'];
