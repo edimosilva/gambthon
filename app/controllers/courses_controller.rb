@@ -2,11 +2,11 @@ require 'net/http'
 
 class CoursesController < ApplicationController
   def catcho
-    render json: { data: Course.first.average_salarie };
+    render json: Course.first, each_serializer: CourseSerializer
   end
 
   def myseed
-    Course.create(name: 'Enfermagem', ies: 'rep', city: 'São José', field1: 'enfermeiro');
+    Course.create(name: 'Enfermagem', ies: 'rep', city: 'São José', field1: 'enfermeiro', field2:'https://upload.wikimedia.org/wikipedia/commons/2/20/Logo_Unichristus.png', field3:'1000.00', field4: '800.00');
     Course.create(name: 'Marketing', ies: 'rep', city: 'São José', field1: 'nota 7');
     Course.create(name: 'Ciencias da Computação', ies: 'UNI', city: 'São José', field1: 'nota 9');
     Course.create(name: 'Sistemas de Informação', ies: 'FAC10', city: 'São José', field1: 'nota 8');

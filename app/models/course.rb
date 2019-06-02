@@ -1,6 +1,15 @@
 class Course < ApplicationRecord
   def average_salarie
-    url = "https://www.catho.com.br/profissoes/busca/#{job()}/"
+    average_salarie_from_catho(job)
+  end
+
+  def estagio_average_salarie
+    search_term = "estagio-em-#{name}"
+    average_salarie_from_catho(search_term)
+  end
+
+  def average_salarie_from_catho(search_term)
+    url = "https://www.catho.com.br/profissoes/busca/#{search_term}/"
     parsed_url = URI.parse(url)
     http = Net::HTTP.new(parsed_url.host, parsed_url.port)
     http.use_ssl = true
@@ -15,6 +24,23 @@ class Course < ApplicationRecord
   def job
     field1
   end
+
+  def ies_logo
+    field2
+  end
+
+  def full_value
+    "R$ #{field3}"
+  end
+
+  def bolsa_value
+    "R$ #{field4}"
+  end
+
+  def valor_do_desconto
+    "R$ #{field3.to_f - field4.to_f}"
+  end
+
 
   def salaries_average(json)
     jobs = json['cargos'];
