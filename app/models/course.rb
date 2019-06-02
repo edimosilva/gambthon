@@ -99,7 +99,7 @@ class Course < ApplicationRecord
   end
 
   def distance_to_center
-    origin =''
+    origin = ''
     if city == 'Fortaleza'
       origin = '-3.7338361,-38.550539'
     else

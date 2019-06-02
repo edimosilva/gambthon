@@ -104,10 +104,25 @@ class CoursesController < ApplicationController
     end
     courses = Course.where(ies: 'UNICHRISTUS')
     for course in courses
-      course.lat = '-23.255861'
-      course.lng = '-45.9499927'
+      course.lat = '-3.7342325'
+      course.lng = '-38.4953481'
       course.save
     end
+    courses = Course.where(ies: 'FBUNI')
+    for course in courses
+      course.lat = '-3.7364886'
+      course.lng = '-38.4883957'
+      course.save
+    end
+
+
+    courses = Course.where(ies: 'Anhanguera')
+    for course in courses
+      course.lat = '-23.259853'
+      course.lng = '-45.9123172'
+      course.save
+    end
+
     render json: { data: Course.all }
   end
 end
