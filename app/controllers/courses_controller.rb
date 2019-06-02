@@ -25,19 +25,19 @@ class CoursesController < ApplicationController
   end
 
   def get_all_cities
-    render json: Course.all.pluck(:city).uniq, each_serializer: CitySerializer
+    render json: Course.all.pluck(:city).uniq
   end
 
   def get_all_ies_by_city
     city_name = params['city'];
     ies_by_city = Course.where(city: city_name).pluck(:ies).uniq;
-    render json: ies_by_city, each_serializer: IesSerializer
+    render json: ies_by_city
   end
 
   def courses_by_ies
     ies_name = params['ies'];
     courses_by_ies = Course.where(ies: ies_name).pluck(:name).uniq;
-    render json: courses_by_ies, each_serializer: CoursesByIesSerializer
+    render json: courses_by_ies
   end
 
   def get_course_by_name_and_ies

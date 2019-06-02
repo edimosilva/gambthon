@@ -90,6 +90,15 @@ class Course < ApplicationRecord
     end
   end
 
+  def fix_city_name
+    courses = Course.where(city: 'São José dos campos');
+    for course in courses
+      course.name = 'São José dos Campos'
+      course.save
+      binding.pry
+    end
+  end
+
   def distance_to_center
     origin =''
     if city == 'Fortaleza'
