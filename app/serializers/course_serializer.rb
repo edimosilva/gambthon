@@ -1,5 +1,5 @@
 class CourseSerializer < ActiveModel::Serializer
-  attributes :name, :full_name, :ies_name, :ies_full, :ies_logo, :city, :average_salarie, :estagio_average_salarie, :valor_completo, :valor_com_desconto, :valor_do_desconto, :duracao_curso, :link_bolsa, :area, :state, :empregabilidade, :intercambio, :about, :mec_score, :course_grade, :cep, :lat, :lng
+  attributes :name, :full_name, :ies_name, :ies_full, :ies_logo, :city, :average_salarie, :estagio_average_salarie, :valor_completo, :valor_com_desconto, :valor_do_desconto, :duracao_curso, :link_bolsa, :area, :state, :empregabilidade, :intercambio, :about, :mec_score, :course_grade, :cep, :lat, :lng, :distance_to_center
 
   def full_name
     "#{object.name} - #{object.ies} - #{object.city}"
@@ -55,5 +55,10 @@ class CourseSerializer < ActiveModel::Serializer
 
   def intercambio
     object.intercambio
+  end
+
+  def distance_to_center
+    d = object.distance_to_center
+    "#{d} KM" if d
   end
 end

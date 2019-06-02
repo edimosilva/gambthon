@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   get 'catcho', to: 'courses#catcho'
   get 'get_all_cities', to: 'courses#get_all_cities'
   get 'get_all_ies_by_city', to: 'courses#get_all_ies_by_city'
+  get 'set_lat_andlng', to: 'courses#set_lat_andlng'
+  get 'distance_to_ies', to: 'courses#distance_to_ies'
 end

@@ -5,6 +5,25 @@ class CoursesController < ApplicationController
     render json: Course.first, each_serializer: CourseSerializer
   end
 
+  def distance_to_ies
+    origin = params[:user_lat_lng]
+    ies_name = params[:ies]
+    course = Course.where(ies: ies_name)[0]
+    render json: { data: course.distance_to_ies(origin) }
+  end
+
+  def set_lat_andlng
+    ies = params['ies']
+    lat = params['lat']
+    lng = params['lng']
+    courses = Course.where(ies: ies)
+    for course in courses
+      course.lat = lat
+      course.lng = lng
+      course.save
+    end
+  end
+
   def get_all_cities
     render json: Course.all.pluck(:city).uniq, each_serializer: CitySerializer
   end
@@ -25,7 +44,7 @@ class CoursesController < ApplicationController
     course_name = params['name'];
     ies = params['ies'];
     course = Course.find_by(name: course_name, ies: ies);
-    render json: course, each_serializer: CourseSerializer
+    render json: course, serializer: CourseSerializer
   end
 
   def deleteall
