@@ -10,16 +10,21 @@ class Course < ApplicationRecord
   end
 
   def average_salarie_from_catho(search_term)
-    url = "https://www.catho.com.br/profissoes/busca/#{search_term}/"
-    parsed_url = URI.parse(url)
-    http = Net::HTTP.new(parsed_url.host, parsed_url.port)
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(parsed_url.request_uri)
+    begin
+      url = "https://www.catho.com.br/profissoes/busca/#{search_term}/"
+      parsed_url = URI.parse(url)
+      http = Net::HTTP.new(parsed_url.host, parsed_url.port)
+      http.use_ssl = true
+      request = Net::HTTP::Get.new(parsed_url.request_uri)
 
-    response = http.request(request)
-    response.inspect
-    json_body = JSON.parse(response.body)
-    salaries_average(json_body)
+      response = http.request(request)
+      response.inspect
+      json_body = JSON.parse(response.body)
+      salaries_average(json_body)
+    rescue Exception => e # Never do this!
+      binding.pry
+      print e
+    end
   end
 
   def job
@@ -69,16 +74,21 @@ class Course < ApplicationRecord
   end
 
   def salaries_average(json)
-    jobs = json['cargos'];
-    sum = 0.0
-    min_salary = 99999999
-    max_salary = 0
-    for job in jobs
-      salary = job['mediaSalarial'].to_f
-      min_salary = salary if salary < min_salary
-      max_salary = salary if salary > max_salary
+    begin
+      jobs = json['cargos'];
+      sum = 0.0
+      min_salary = 99999999
+      max_salary = 0
+      for job in jobs
+        salary = job['mediaSalarial'].to_f
+        min_salary = salary if salary < min_salary && salary > 0
+        max_salary = salary if salary > max_salary
+      end
+      value = "R$ #{min_salary} - R$ #{max_salary}"
+      value
+    rescue Exception => e # Never do this!
+      binding.pry
+      print e
     end
-    value = "R$ #{min_salary} - R$ #{max_salary}"
-    value
   end
 end
